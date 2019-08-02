@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div>
+    Welcome {{name}}
+  </div>
+  <h2 [style.color] = "hasError ? 'red' : 'green'"> This is style binding</h2>
+  <h2 [style.color] = "highlight"> Is this highlighted?</h2>
+  <h2 [ngStyle] = "titleStyles">This is italic</h2>
+  <button (click)="onClick($event)"> This is event Binding </button><br><br>
+  {{greeting}}
+  <input #myInput type="text"><br><br>
+  <button (click)="getMessage(myInput.value)"> Log </button>
+  <input [(ngModel)] = "name" type="text">
+  {{name}}
+  <h2 *ngIf="displayName">Ng If condition</h2>
+  <h2 *ngIf="displayName ; else elseBlock">Ng If Else condition</h2>
+  <ng-template #elseBlock>
+  <h2> Else Condition</h2>
+  </ng-template>
+
+  <br>
+  <div *ngIf="displayBlock ; then thenBlk ; else elseBlk"></div>
+  <ng-template #thenBlk>
+  <h2> Then Condition</h2>
+  </ng-template>
+
+  <ng-template #elseBlk>
+  <h2> Else Condition</h2>
+  </ng-template>
+  <br><br>
+
+  <div [ngSwitch] = "color">
+    <div *ngSwitchCase = "'red'">This is red color</div>
+    <div *ngSwitchCase = "'blue'">This is blue color</div>
+    <div *ngSwitchCase = "'black'">This is black color</div>
+    <div *ngSwitchDefault>Choose a color</div>
+  
+  </div>
+
+  <div *ngFor = "let color of colors; index as i; first as f; last as l">
+    <h3>  {{i}} {{f}} {{l}} {{color}} </h3>
+
+  </div>
+
+  <h2> {{"Hello my name is " + parentName + ". @Input() decorator"}}</h2>
+</body>
+</html>
